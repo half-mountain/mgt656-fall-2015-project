@@ -50,6 +50,13 @@ function newEvent(request, response){
 }
 
 /**
+ * Function that returns true if integer 
+ */
+function isInteger(x) {
+  return x % 1 === 0;
+}
+
+/**
  * Controller to which new events are submitted.
  * Validates the form and adds the new event to
  * our global list of events.
@@ -59,6 +66,42 @@ function saveEvent(request, response){
 
   if (validator.isLength(request.body.title, 5, 50) === false) {
     contextData.errors.push('Your title should be between 5 and 100 letters.');
+  }
+
+  if (validator.isLength(request.body.location, 1, 50) === false) {
+    contextData.errors.push('Your location should be between 1 and 50 characters.');
+  }
+
+  if (request.body.year>2016 || request.body.year<2015) {
+    contextData.errors.push('The year of your event should be 2015 or 2016.');
+  }
+
+  if (isInteger(request.body.year) === false) {
+    contextData.errors.push('The year of your event should be an integer.');
+  }
+
+  if (request.body.month>11 || request.body.month<0) {
+    contextData.errors.push('The month of your event should be between January and December.');
+  }
+
+  if (isInteger(request.body.month) === false) {
+    contextData.errors.push('The month of your event should be an integer.');
+  }
+
+  if (request.body.day>31 || request.body.day<1) {
+    contextData.errors.push('The day of your event should be between the 1st and the 31st day of the month.');
+  }
+
+  if (isInteger(request.body.day) === false) {
+    contextData.errors.push('The day of your event should be an integer.');
+  }
+
+  if (request.body.hour>23 || request.body.hour<0) {
+    contextData.errors.push('The hour of your event should fall within the 24-hour day. Try again!');
+  }
+
+  if (isInteger(request.body.hour) === false) {
+    contextData.errors.push('The hour of your event should be an integer.');
   }
 
   if (contextData.errors.length === 0) {
