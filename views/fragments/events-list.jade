@@ -3,7 +3,8 @@ ul(class="eventlist")
     li(class="event" id="event-#{event.id}")
       strong #{event.title}
       |  on 
-      span.time(datetime="#{event.date}") #{moment(event.date).format("dddd, MMMM Do YYYY, h:mm a")}
+      span
+        time(datetime="#{event.date}") #{moment(event.date).format("dddd, MMMM Do YYYY, h:mm a")}
       .attending 
         | #{event.attending.length} attending so far. 
         a(class="event-link" href="/events/#{event.id}") Click here for more details
