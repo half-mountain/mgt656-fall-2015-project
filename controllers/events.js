@@ -94,8 +94,6 @@ function saveEvent(req, res){
       items: thingsToBring
     };
 
-
-
     var contextData = {errors: [], allowedDateInfo: allowedDateInfo};
 
       if (validator.isLength(req.body.title, 5, 50) === false) {
