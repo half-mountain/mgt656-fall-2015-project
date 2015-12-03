@@ -1,5 +1,12 @@
 /* Css overrides for index */
 
+nav {
+  height: 0px;
+}
+
+.wbw-description {
+  margin-bottom: 1em;
+}
 
 nav a {
   color: white;
@@ -8,4 +15,16 @@ nav a {
 .nav > li > a:hover, .nav > li > a:focus {
     background-color: transparent;
     color: #333333;
+}
+
+
+
+.skinny-container > .row {
+  margin-top: 2em;
+}
+
+
+
+#imessage {
+  margin: 3em;
 }

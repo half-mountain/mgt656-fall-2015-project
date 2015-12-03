@@ -19,15 +19,20 @@ block jumbotron
         a.btn.btn-lg.btn-default.jumbo-text(href='/events/new', role='button') Plan a better event now →
 
 block mainContent
-  .row
-    .col-lg-6
-      h1 A better way to organize events
-      p
-        | Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-      p
-        | Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
-    .col-lg-6
-      h1
+  .skinny-container
+    .row
+      h2 Ever had this happen? 
+      img#imessage(src='/images/imessage.png', width='300px')
+      .wbw-description(style='white-space:pre;')
+        | Keep those angry emojis in check with Who Brings What. 
+        br
+        strong Add potluck items 
+        | to your event and 
+        strong assign RSVP'd invitees. 
+        br
+        | Planning a potluck has never been easier!
+    .row
+      h2
         a(id="new", href='/events/new') Create an event
         | , join one below or 
         a(href='/events') view all

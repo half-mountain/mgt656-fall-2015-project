@@ -1,5 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto:400,500);
 
+
+/*#logo {
+  width: 20%;
+}*/
+
+
+.skinny-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5em;
+  text-align: center;
+}
+
 #bootstrap-override body {
   padding: 50px;
   font-family: "Roboto" !important;
@@ -7,6 +20,14 @@
 
 #bootstrap-override h1, h2, h3, h4, h5, h6 {
   /*font-family: "Oswald", sans-serif;*/
+}
+
+.event {
+  list-style-type: none;
+}
+
+nav {
+  height: 60px;
 }
 
 .navbar-inner {
@@ -89,4 +110,8 @@
 .giant {
   font-size: 250%;
   text-align: center;
+}
+
+.eventlist {
+  padding: 0px;
 }
