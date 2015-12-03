@@ -3,8 +3,8 @@ extend layout
 block mainContent
   .skinny-container
     h1#title #{event.title}
-    img#image(src='https://media.giphy.com/media/hZTauiFiq2q4g/giphy.gif')
-    #date #{event.date}
+    img#image(src='#{event.image}')
+    #date #{moment(event.date).format("dddd, MMMM Do, YYYY, h:mm a")}
     span#location #{event.location}
     ul#attendees
       div #{event.attending}
