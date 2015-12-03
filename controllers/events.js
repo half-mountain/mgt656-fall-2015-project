@@ -43,6 +43,7 @@ var allowedDateInfo = {
 
 
 function listEvents(request, response) {
+
   var contextData = {
     'events': events.all.sort(function(a, b) {
       return b.date - a.date;
@@ -56,8 +57,10 @@ function listEvents(request, response) {
  * Controller that renders a page for creating new events.
  */
 function newEvent(request, response){
+
   var contextData = {allowedDateInfo: allowedDateInfo};
   response.render('create-event', contextData);
+
 }
 
 
@@ -75,13 +78,6 @@ function isRangedInt(number, name, min, max, errors){
 
 function saveEvent(req, res){
 
-    // Set our internal DB variable
-    var db = req.db;
-
-    // Set our collection
-    var collection = db.get('eventlist');
-
-
     var thingsToBring = [];
     thingsToBring.push(req.body.items);
 
@@ -94,7 +90,6 @@ function saveEvent(req, res){
       attending: [],
       items: thingsToBring
     };
-
 
 
     var contextData = {errors: [], allowedDateInfo: allowedDateInfo};
@@ -118,7 +113,7 @@ function saveEvent(req, res){
       }
 
     if (contextData.errors.length === 0) {
-      collection.insert( newEvent , function (err, doc) {
+      events.collection.insert( newEvent , function (err, doc) {
           if (err) {
               // If it failed, return error
               res.status(404).send("There was a problem adding the information to the database.");
@@ -162,8 +157,6 @@ function eventDetail (req, res) {
 
 // what is called when someone rsvps to an event
 function rsvp (request, response){
-  var db = request.db;
-  var collection = db.get('eventlist');
 
   // takes the incoming params id and identifies the event user wants to RSVP to and then stores in variable "ev"
   events.getById(parseInt(request.params.id)).success(function(ev){
@@ -173,7 +166,7 @@ function rsvp (request, response){
     if (validator.isEmail(request.body.email) && request.body.email.toLowerCase().indexOf('@yale.edu') !== -1){
       ev.attending.push(request.body.email);
       // JW: Is this anyway you can modify an object instead of querying for it again?
-      collection.findAndModify(
+      events.collection.findAndModify(
         {"_id": ev._id}, // query
         {$set: {attending: ev.attending}},
         function(err, object) {

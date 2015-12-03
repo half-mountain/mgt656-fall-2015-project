@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 var strftime = require('strftime');
 var express = require('express');
 var jade = require('jade');
+var monk = require ('monk');
+
 
 /*
  * Function that configures an application
@@ -21,7 +23,6 @@ module.exports = exports = function(yourApp){
   // });
 
   yourApp.set('view engine', 'jade');
-
 
   // Use 'development' level of logging, ie. verbose
   if (process.env.NODE_ENV !== 'testing') {

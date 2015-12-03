@@ -2,7 +2,21 @@
 
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/halfmountain');
+// var mongoUri = process.env.MONGOLAB_URI;
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if (process.env.NODE_ENV === 'development') {
+  var db = monk("mongodb://localhost:27017/halfmountain")
+}
+if (process.env.NODE_ENV === 'production') {
+  var db = monk(process.env.MONGOLAB_URI);
+}
+
+if (process.env.NODE_ENV === 'testing') {
+  var db = monk("mongodb://localhost:27017/halfmountain");
+}
+
 var collection = db.get('eventlist');
 var events = collection.find();
 var allEvents = [];
@@ -14,10 +28,14 @@ events.each(function(x){allEvents.push(x)});
  */
 function getById (id) {
    return collection.findOne({id: id});
+  //  console.log('hello');
+   //
+  //  collection.findOne({id:id}).on('success', function(doc) {
+  //    console.log('yo');
+  //    return doc;
+   //
+  //  })
 
-   collection.findOne({id:id}).on('success', function(doc) {
-     return doc;
-   })
 }
 
 
@@ -36,4 +54,5 @@ module.exports = exports = {
   all: allEvents,
   getById: getById,
   getMaxId: getMaxId,
+  collection: collection
 };

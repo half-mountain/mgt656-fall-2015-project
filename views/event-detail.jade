@@ -20,6 +20,7 @@ block mainContent
       label(for='email') RSVP to this event:
       input(type='email', name='email')
       input(type='submit', value='Submit')
+    form#thingstobring(action="#{'/events/' + event.id + '/rsvp'}")
 
 
 // Load the Content Experiment JavaScript API client for the experiment
