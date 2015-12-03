@@ -43,11 +43,14 @@ var allowedDateInfo = {
 
 
 function listEvents(request, response) {
-
+  var allEvents = events.all;
+  for (var i = 0; i < allEvents.length; i++) {
+    console.log(events.all[i].date);
+  }
   var contextData = {
     'events': events.all.sort(function(a, b) {
       return b.date - a.date;
-    }),
+    })
   };
   response.render('event', contextData);
 }
@@ -86,10 +89,11 @@ function saveEvent(req, res){
       title: req.body.title,
       location: req.body.location,
       image: req.body.image,
-      date: new Date(),
+      date: new Date(req.body.year, req.body.month, req.body.day, req.body.hour, req.body.minute),
       attending: [],
       items: thingsToBring
     };
+
 
 
     var contextData = {errors: [], allowedDateInfo: allowedDateInfo};
@@ -121,6 +125,7 @@ function saveEvent(req, res){
           else {
               // And forward to success page
               console.log(newEvent);
+              events.all.push(newEvent);
               res.redirect('/events/' + newEvent.id);
           }
       });

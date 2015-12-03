@@ -21,6 +21,7 @@ var collection = db.get('eventlist');
 var events = collection.find();
 var allEvents = [];
 
+// this isn't updating? asynchronous problem?
 events.each(function(x){allEvents.push(x)});
 
 /**
