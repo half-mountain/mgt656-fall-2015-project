@@ -5,6 +5,9 @@
   width: 20%;
 }*/
 
+.container {
+  min-height: 100%;
+}
 
 .skinny-container {
   max-width: 600px;
@@ -15,7 +18,7 @@
 
 #bootstrap-override body {
   padding: 50px;
-  font-family: "Roboto" !important;
+  font-family: "Helvetica Neue" !important;
 }
 
 #bootstrap-override h1, h2, h3, h4, h5, h6 {
@@ -24,6 +27,7 @@
 
 .event {
   list-style-type: none;
+  margin-bottom: 10px;
 }
 
 nav {
@@ -31,7 +35,7 @@ nav {
 }
 
 .navbar-inner {
-    background:transparent;
+  background:transparent;
 }
 
 .btn { /* Makes ghost buttons */
@@ -69,7 +73,7 @@ nav {
       rgba(0, 0, 0, 0.8)
     ), url('/images/cole-picnic-crop.jpg');
   background-size: cover;
-  min-height: 450px;
+  min-height: 500px;
   text-align: center;
 
 }

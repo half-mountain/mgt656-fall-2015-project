@@ -110,8 +110,8 @@ function saveEvent(req, res){
       isRangedInt(req.body.minute, "minute", allowedDateInfo.minutes[0], allowedDateInfo.minutes[allowedDateInfo.minutes.length-1], contextData.errors);
       isRangedInt(req.body.month, "month", 0, 11, contextData.errors);
 
-      if (!validator.isURL(req.body.image) || (req.body.image.match(/\.(gif|png)$/i) === null )){
-        contextData.errors.push('Your image should be a png or gif');
+      if (!validator.isURL(req.body.image) || (req.body.image.match(/\.(gif|jpg)$/i) === null )){
+        contextData.errors.push('Your image should be a png or jpg');
       }
 
     if (contextData.errors.length === 0) {

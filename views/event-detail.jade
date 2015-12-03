@@ -5,11 +5,11 @@ block logoImg
   img#logo.navbar-brand(src='/images/logo_green.png', height='60')
 
 block mainContent
-
-  h1#title #{event.title}
-    span#date #{event.date}
+  .skinny-container
+    h1#title #{event.title}
+    img#image(src='https://media.giphy.com/media/hZTauiFiq2q4g/giphy.gif')
+    #date #{event.date}
     span#location #{event.location}
-    img#image(src='/images/yale_college_logo.png')
     ul#attendees
       div #{event.attending}
     #thingstobring #{event.items}

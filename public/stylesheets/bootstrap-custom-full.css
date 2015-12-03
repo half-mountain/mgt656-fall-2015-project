@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto:400,500);
+/*@import url(https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto:400,500);*/
 /*!
  * Bootstrap v3.0.3
  *
@@ -265,10 +265,10 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #333333;
+  color: #2d2d2d;
   background-color: #ffffff;
 }
 input,
@@ -280,12 +280,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #389FFC;
+  color: black;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #183305;
+  color: gray;
   text-decoration: underline;
 }
 a:focus {
@@ -653,7 +653,7 @@ pre {
   line-height: 1.428571429;
   word-break: break-all;
   word-wrap: break-word;
-  color: #333333;
+  color: darkgray;
   background-color: #f5f5f5;
   border: 1px solid #cccccc;
   border-radius: 4px;
@@ -1567,7 +1567,6 @@ legend {
   margin-bottom: 20px;
   font-size: 21px;
   line-height: inherit;
-  color: #333333;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -3395,7 +3394,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 20px 15px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -4364,7 +4363,7 @@ a.list-group-item.active > .badge,
   border-radius: 6px;
 }
 .jumbotron .container {
-  margin-top: 50px;
+  margin-top: 30px;
   max-width: 100%;
 }
 @media screen and (min-width: 768px) {
