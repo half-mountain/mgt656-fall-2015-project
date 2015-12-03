@@ -4,7 +4,7 @@ ul(class="eventlist")
       | #{event.title}.
       time(datetime="#{event.date}") #{event.date|prettyDate}
       | #{event.attending.length} attending so far.
-      a(href="/events/#{event.id}") Click here for more details
+      a(class="event-link" href="/events/#{event.id}") Click here for more details
 
 // Load the Content Experiment JavaScript API client for the experiment
 script(src='//www.google-analytics.com/cx/api.js?experiment=zACIABVzR2itZEHP5hO0fQ')
