@@ -10,7 +10,6 @@ var router = express.Router();
  */
 function index (request, response) {
   var currentTime = new Date();
-  console.log(currentTime);
   var contextData = {
     'title': 'Half Mountain',
     'tagline': 'Check out our upcoming events!',

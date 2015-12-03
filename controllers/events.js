@@ -44,9 +44,6 @@ var allowedDateInfo = {
 
 function listEvents(request, response) {
   var allEvents = events.all;
-  for (var i = 0; i < allEvents.length; i++) {
-    console.log(events.all[i].date);
-  }
   var contextData = {
     'events': events.all.sort(function(a, b) {
       return b.date - a.date;
@@ -110,8 +107,8 @@ function saveEvent(req, res){
       isRangedInt(req.body.minute, "minute", allowedDateInfo.minutes[0], allowedDateInfo.minutes[allowedDateInfo.minutes.length-1], contextData.errors);
       isRangedInt(req.body.month, "month", 0, 11, contextData.errors);
 
-      if (!validator.isURL(req.body.image) || (req.body.image.match(/\.(gif|jpg)$/i) === null )){
-        contextData.errors.push('Your image should be a png or jpg');
+      if (!validator.isURL(req.body.image) || (req.body.image.match(/\.(gif|png)$/i) === null )){
+        contextData.errors.push('Your image should be a png or gif');
       }
 
     if (contextData.errors.length === 0) {
@@ -122,7 +119,6 @@ function saveEvent(req, res){
           }
           else {
               // And forward to success page
-              console.log(newEvent);
               events.all.push(newEvent);
               res.redirect('/events/' + newEvent.id);
           }
@@ -163,7 +159,6 @@ function addThingToBring (req, res) {
       res.status(404).send('404 Error: No such event');
     }
     ev.items.push(req.body.item);
-    console.log(ev.items);
     events.collection.findAndModify(
       {"_id": ev._id}, // query
       {$set: {items: ev.items}},
