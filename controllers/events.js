@@ -92,7 +92,6 @@ function saveEvent(req, res){
     };
 
 
-
     var contextData = {errors: [], allowedDateInfo: allowedDateInfo};
 
       if (validator.isLength(req.body.title, 5, 50) === false) {
