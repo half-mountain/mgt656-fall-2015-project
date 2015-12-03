@@ -13,6 +13,8 @@ html
       ga('create', 'UA-70408363-1', 'auto');
       ga('send', 'pageview');
       
+    block extraHead
+      
   body#bootstrap-override
     block header
       header
@@ -32,6 +34,7 @@ html
     .container
       block mainContent
         section Welcome to #{title}. #{tagline}
+    .container
       block footer
         footer © 2015 
           a(href='/') #{title} 
