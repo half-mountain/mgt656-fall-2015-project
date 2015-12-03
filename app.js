@@ -24,6 +24,7 @@ var donationControllers = require('./controllers/donation.js');
 
 // Create our express app
 var app = express();
+app.locals.moment = require('moment');
 
 
 // Configure it
