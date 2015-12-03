@@ -1,9 +1,13 @@
 extends layout
 
+block logoImg
+  img#logo.navbar-brand(src='/images/logo_green.png', height='60')
+  
 head
    link(rel='stylesheet', href='/stylesheets/about.css')
    
 block mainContent
+  .top-offset
   h1 About Us 
   .dropdown
     Dropdown
