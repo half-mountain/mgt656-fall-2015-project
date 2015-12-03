@@ -37,10 +37,6 @@
   
 }
 
-/* TODO: The nav link = white should only load on homepage */
-nav a {
-  color: white;
-}
 
 .pad-after {
   padding-bottom: 1em;
