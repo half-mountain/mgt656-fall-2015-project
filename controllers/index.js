@@ -10,6 +10,7 @@ var router = express.Router();
  */
 function index (request, response) {
   var currentTime = new Date();
+  console.log(currentTime);
   var contextData = {
     'title': 'Half Mountain',
     'tagline': 'Check out our upcoming events!',
@@ -17,7 +18,7 @@ function index (request, response) {
         return b.date - a.date;
       }).filter(function(x) {
         return x.date > currentTime;
-      }),
+      })
   };
   response.render('index', contextData);
 }
