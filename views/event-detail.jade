@@ -7,7 +7,8 @@ block mainContent
     span#location #{event.location}
     img#image(src='/images/yale_college_logo.png')
     ul#attendees
-      div #{event.attending}  
+      div #{event.attending}
+    #thingstobring #{event.items}
     p
       a.donation(class='donation' href='/donation') Donate
       |  to this event!
@@ -20,8 +21,8 @@ block mainContent
       label(for='email') RSVP to this event:
       input(type='email', name='email')
       input(type='submit', value='Submit')
-    form#thingstobring(action="#{'/events/' + event.id + '/rsvp'}", method="POST", placeholder='ex: the booze')
-      label(for='item')
+    form#thingstobring(action="#{'/events/' + event.id + '/addThingToBring'}", method="POST", placeholder='ex: the booze')
+      label(for='item') Potluck Items:
       input(type='item', name='item')
       input(type='submit', value='Submit')
 

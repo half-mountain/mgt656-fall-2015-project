@@ -156,6 +156,27 @@ function eventDetail (req, res) {
 }
 
 
+function addThingToBring (req, res) {
+  // takes the incoming params id and identifies the event user wants to RSVP to and then stores in variable "ev"
+  events.getById(parseInt(req.params.id)).success(function(ev){
+    if (ev === null) {
+      res.status(404).send('404 Error: No such event');
+    }
+    ev.items.push(req.body.item);
+    console.log(ev.items);
+    events.collection.findAndModify(
+      {"_id": ev._id}, // query
+      {$set: {items: ev.items}},
+      function(err, object) {
+          if (err){
+              console.warn("oops");  // returns error if no matching object found
+          }else{
+              res.redirect('/events/' + ev.id);
+          }
+      });
+
+    });
+}
 
 
 // what is called when someone rsvps to an event
@@ -202,4 +223,5 @@ module.exports = {
   'newEvent': newEvent,
   'saveEvent': saveEvent,
   'rsvp': rsvp,
+  'addThingToBring': addThingToBring
 };

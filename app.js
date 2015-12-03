@@ -66,6 +66,7 @@ app.get('/donation', donationControllers.donation);
 
 // action for RSVPing
 app.post('/events/:id/rsvp', eventControllers.rsvp);
+app.post('/events/:id/addThingToBring', eventControllers.addThingToBring);
 
 app.get('/sprints', function (req, res) {
   var contextData = {};
