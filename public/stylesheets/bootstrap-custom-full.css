@@ -347,7 +347,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: Oswald;
+  /*font-family: Oswald;*/
   font-weight: 500;
   line-height: 1.1;
   color: #444444;
@@ -4364,6 +4364,7 @@ a.list-group-item.active > .badge,
   border-radius: 6px;
 }
 .jumbotron .container {
+  margin-top: 50px;
   max-width: 100%;
 }
 @media screen and (min-width: 768px) {
