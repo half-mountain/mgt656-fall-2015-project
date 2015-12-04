@@ -136,3 +136,7 @@ nav {
 .eventlist {
   padding: 0px;
 }
+
+.pick-date > .form-group {
+  margin: 5px;
+}

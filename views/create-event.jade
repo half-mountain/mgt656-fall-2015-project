@@ -16,44 +16,45 @@ block mainContent
         h1 Let's get this party started...
       
       form#create-event(method='POST')
-        .row
-          h3 Create your ah-shmazing event
+        h3 Create your ah-shmazing event
+        
+        label(for='title') Event title:
+        input(type='text', name='title', class='form-control', placeholder='Title')
+        
+        label(for='location') Event location:
+        input(type='text', name='location', class='form-control', placeholder='Location')
+        
+        label(for='image') Event image URL:
+        input(type='text', id='image', name='image', class='form-control', placeholder='Online Image URL')
+        #add-image-here
           
-          label(for='title') Event title:
-          input(type='text', name='title', class='form-control', placeholder='Title')
-          
-          label(for='location') Event location:
-          input(type='text', name='location', class='form-control', placeholder='Location')
-          
-          label(for='image') Event image URL:
-          input(type='text', id='image', name='image', class='form-control', placeholder='Online Image URL')
-          #add-image-here
-          .row
-            .col-sm-5
-              h3 Date
-              label(for='year') Year:
-              select(name='year' id='year', class='form-control', placeholder='Year')
-                for year in allowedDateInfo.years
-                  option(value='#{year}') #{year}
-              label(for='month') Month:
-              select(name='month', id='month', class='form-control', placeholder='Month')
-                for monthName, monthNumber in allowedDateInfo.months
-                  option(value='#{monthNumber}') #{monthName}
-              label(for='day') Day:
-              select(name='day', id='day', class='form-control')
-                for day in allowedDateInfo.days
-                  option(value='#{day}') #{day}
-            .col-sm-5.col-sm-offset-
-              h3 Time
-              label(for='hour') Hour:
-              select(name='hour', id='hour', class='form-control')
-                for hour in allowedDateInfo.hours
-                  option(value="#{hour}") #{hour}
-              
-              label(for='minute') Minute:
-              select(name='minute', class='form-control')
-                for minute in allowedDateInfo.minutes
-                  option(value='#{minute}') #{minute}
+        .form-inline.pick-date
+          h3 Date and Time
+          .form-group
+            label(for='month') Month:
+            select(name='month', id='month', class='form-control', placeholder='Month')
+              for monthName, monthNumber in allowedDateInfo.months
+                option(value='#{monthNumber}') #{monthName}
+          .form-group
+            label(for='day') Day:
+            select(name='day', id='day', class='form-control')
+              for day in allowedDateInfo.days
+                option(value='#{day}') #{day}
+          .form-group
+            label(for='year') Year:
+            select(name='year' id='year', class='form-control', placeholder='Year')
+              for year in allowedDateInfo.years
+                option(value='#{year}') #{year}
+          .form-group
+            label(for='hour') Hour:
+            select(name=  'hour', id='hour', class='form-control')
+              for hour in allowedDateInfo.hours
+                option(value="#{hour}") #{hour}
+          .form-group
+            label(for='minute') Minute:
+            select(name='minute', class='form-control')
+              for minute in allowedDateInfo.minutes
+                option(value='#{minute}') #{minute}
         .col-sm-6
           h2 Things to bring
           label(for='items') Things To Bring:

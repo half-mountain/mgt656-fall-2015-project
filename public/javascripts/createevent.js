@@ -1,6 +1,3 @@
-// var validator = require('validator');
-
-
 function getCssValuePrefix()
 {
     var rtrnVal = '';//default to standard syntax
