@@ -26,7 +26,8 @@ block mainContent
           input(type='text', name='location', class='form-control', placeholder='Location')
           
           label(for='image') Event image URL:
-          input(type='text' name='image', class='form-control', placeholder='Image URL')
+          input(type='text', id='image', name='image', class='form-control', placeholder='Online Image URL')
+          #add-image-here
           .row
             .col-sm-5
               h3 Date
@@ -60,4 +61,4 @@ block mainContent
         
         .row
           input(id='submit', type='submit', value='Submit', class='btn btn-block btn-primary btn-lg')
-     
+        script(src="/javascripts/createevent.js")

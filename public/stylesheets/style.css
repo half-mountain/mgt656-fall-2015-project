@@ -1,5 +1,25 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto:400,500);
 
+/*get rid of round corners throughout*/
+* {
+  -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+}
+
+
+
+
+.lazyload {
+    opacity: 0;
+}
+
+.lazyloading {
+    opacity: 1;
+    transition: opacity 300ms;
+    background: #f7f7f7 url('/images/loader.gif') no-repeat center;
+}
+
 
 /*#logo {
   width: 20%;
@@ -21,9 +41,6 @@
   font-family: "Helvetica Neue" !important;
 }
 
-#bootstrap-override h1, h2, h3, h4, h5, h6 {
-  /*font-family: "Oswald", sans-serif;*/
-}
 
 .event {
   list-style-type: none;
@@ -68,10 +85,10 @@ nav {
 }
 
 .jumbotron {
-  background-image: linear-gradient(
+  /*background-image: linear-gradient(
       rgba(0, 0, 0, 0.2),
       rgba(0, 0, 0, 0.8)
-    ), url('/images/cole-picnic-crop.jpg');
+    ), url('/images/cole-picnic-crop.jpg');*/
   background-size: cover;
   min-height: 500px;
   text-align: center;
