@@ -43,7 +43,25 @@ $( "#image" )
         },
         success:
           function(){
-            $('#add-image-here').html( "<img class='added-image' src='"+$text+"'></img>" );
+            // add regexp that will take off http/https from image
+            if ($text.search("https:") !== -1) {
+              if (window.location.protocol == "https:") {
+                $('#add-image-here').html( "<img class='added-image' src='"+$text+"'></img>" );
+              }
+              else {
+                $second = $text.replace(/https:/i, "http:");
+                $('#add-image-here').html( "<img class='added-image' src='"+$second+"'></img>" );
+              }
+            }
+            else {
+              if (window.location.protocol == "http:") {
+                $('#add-image-here').html( "<img class='added-image' src='"+$text+"'></img>" );
+              }
+              else {
+                $second = $text.replace(/http:/i, "https:");
+                $('#add-image-here').html( "<img class='added-image' src='"+$second+"'></img>" );
+              }
+            }
           }
       });
   });
