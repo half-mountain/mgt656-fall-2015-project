@@ -28,38 +28,37 @@ block mainContent
         input(type='text', id='image', name='image', class='form-control', placeholder='Online Image URL')
         #add-image-here
           
+        h3 Date and Time
         .form-inline.pick-date
-          h3 Date and Time
           .form-group
             label(for='month') Month:
-            select(name='month', id='month', class='form-control', placeholder='Month')
+            select(name='month', id='month', class='form-control date-form', placeholder='Month')
               for monthName, monthNumber in allowedDateInfo.months
                 option(value='#{monthNumber}') #{monthName}
           .form-group
             label(for='day') Day:
-            select(name='day', id='day', class='form-control')
+            select(name='day', id='day', class='form-control date-form')
               for day in allowedDateInfo.days
                 option(value='#{day}') #{day}
           .form-group
             label(for='year') Year:
-            select(name='year' id='year', class='form-control', placeholder='Year')
+            select(name='year' id='year', class='form-control date-form', placeholder='Year')
               for year in allowedDateInfo.years
                 option(value='#{year}') #{year}
           .form-group
             label(for='hour') Hour:
-            select(name=  'hour', id='hour', class='form-control')
+            select(name=  'hour', id='hour', class='form-control date-form')
               for hour in allowedDateInfo.hours
                 option(value="#{hour}") #{hour}
           .form-group
             label(for='minute') Minute:
-            select(name='minute', class='form-control')
+            select(name='minute', class='form-control date-form')
               for minute in allowedDateInfo.minutes
                 option(value='#{minute}') #{minute}
-        .col-sm-6
-          h2 Things to bring
+        .form-group
+          h3 Things to bring
           label(for='items') Things To Bring:
-          input(type='textarea', rows=5, name='items', class='form-control')
-        
-        .row
-          input(id='submit', type='submit', value='Submit', class='btn btn-block btn-primary btn-lg')
+          each val in ["booze", "silverware", "pumpkin pie", "popcorn", "playlist"]
+            input(type='text', name='items', onfocus="this.placeholder = ''", class='form-control', placeholder='Remember the #{val}!')
+        input(id='submit', type='submit', value='Submit', class='btn btn-primary')
         script(src="/javascripts/createevent.js")

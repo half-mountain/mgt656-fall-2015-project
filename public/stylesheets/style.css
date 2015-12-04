@@ -1,13 +1,32 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto:400,500);
 
+*:focus {
+outline: none;
+}
+
 /*get rid of round corners throughout*/
 * {
   -webkit-border-radius: 0 !important;
      -moz-border-radius: 0 !important;
           border-radius: 0 !important;
+          border-bottom-top-radius: 0 !important;
+          border-bottom-bottom-radius: 0 !important;
+          border-bottom-left-radius: 0 !important;
+          border-bottom-right-radius: 0 !important;
+
 }
 
-
+.form-control {
+  border-color: gray;
+  box-shadow: none;
+  -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+          border-bottom-top-radius: 0 !important;
+          border-bottom-bottom-radius: 0 !important;
+          border-bottom-left-radius: 0 !important;
+          border-bottom-right-radius: 0 !important;
+}
 
 
 .lazyload {
@@ -38,7 +57,7 @@
 
 #bootstrap-override body {
   padding: 50px;
-  font-family: "Helvetica Neue" !important;
+  /*font-family: "Helvetica Neue" !important;*/
 }
 
 
@@ -55,7 +74,16 @@ nav {
   background:transparent;
 }
 
+
+.btn-primary {
+  background-color: white;
+  color: black;
+  border: 5px solid black;
+}
+
 .btn { /* Makes ghost buttons */
+
+
 
 	border-width: 2px;
 	/*font-family: "Oswald", sans-serif;*/
@@ -121,11 +149,11 @@ nav {
 }
 
 #create-event input[name="items"] {
-  min-height: 150px;
+  /*min-height: 150px;*/
 }
 
-#create-event input[name="submit"] {
-  margin-top: 20px;
+#create-event input[type="submit"] {
+  margin-top: 50px;
 }
 
 .giant {
@@ -139,4 +167,13 @@ nav {
 
 .pick-date > .form-group {
   margin: 5px;
+}
+
+.date-form {
+  border: none;
+  box-shadow: none;
+}
+
+.create-event-btn {
+  border-color: black;
 }
