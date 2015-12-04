@@ -37,31 +37,34 @@ document.addEventListener('lazybeforeunveil', function(e){
 $( "#image" )
   .focusout(function() {
       $text = $(this).val();
-      $.ajax({url:$text,type:'HEAD',error:
-        function() {
-          $('#add-image-here').html( "<p><em>Oops! Doesn't look like a valid image url! Try again?</em></p>" );
-        },
-        success:
-          function(){
-            // add regexp that will take off http/https from image
-            if ($text.search("https:") !== -1) {
-              if (window.location.protocol == "https:") {
-                $('#add-image-here').html( "<img class='added-image' src='"+$text+"'></img>" );
-              }
-              else {
-                $second = $text.replace(/https:/i, "http:");
-                $('#add-image-here').html( "<img class='added-image' src='"+$second+"'></img>" );
-              }
+      function callAjax () {
+        $.ajax({url:$text,type:'HEAD',error:
+          function() {
+            $('#add-image-here').html( "<p><em>Oops! Doesn't look like a valid image url! Try again?</em></p>" );
+          },
+          success:
+            function(){
+              $('#add-image-here').html( "<img class='added-image' src='"+$text+"'></img" );
             }
-            else {
-              if (window.location.protocol == "http:") {
-                $('#add-image-here').html( "<img class='added-image' src='"+$text+"'></img>" );
-              }
-              else {
-                $second = $text.replace(/http:/i, "https:");
-                $('#add-image-here').html( "<img class='added-image' src='"+$second+"'></img>" );
-              }
-            }
-          }
-      });
+        });
+      }
+
+      if ($text.search("https:") !== -1) {
+        if (window.location.protocol == "https:") {
+          callAjax();
+        }
+        else {
+          $text = $text.replace(/https:/i, "http:");
+          callAjax();
+        }
+      }
+      else {
+        if (window.location.protocol == "http:") {
+          callAjax();
+        }
+        else {
+          $text = $text.replace(/http:/i, "https:");
+          callAjax();
+        }
+      }
   });
