@@ -60,5 +60,5 @@ block mainContent
           label(for='items') Things To Bring:
           each val in ["booze", "silverware", "pumpkin pie", "popcorn", "playlist"]
             input(type='text', name='items', onfocus="this.placeholder = ''", class='form-control', placeholder='Remember the #{val}!')
-        input(id='submit', type='submit', value='Submit', class='btn btn-primary')
+        input(id='submit', type='submit', value='Create Event', class='btn btn-default') 
         script(src="/javascripts/createevent.js")

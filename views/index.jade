@@ -33,9 +33,9 @@ block mainContent
         a(id="new", href='/events/new') Create an event
         |  or join one below
       include fragments/events-list
-      btn.btn-default
-        a(href='/events') 
+      a(href='/events') 
+        btn.btn.btn-default
           | view all
-        |  
-        i.fa.fa-long-arrow-right
+          |  
+          i.fa.fa-long-arrow-right
   script(src="/javascripts/createevent.js")
