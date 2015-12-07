@@ -45,6 +45,7 @@ var allowedDateInfo = {
 function listEvents(request, response) {
   var allEvents = events.all;
   var contextData = {
+    'title': 'Who Brings What | Events',
     'events': events.all.sort(function(a, b) {
       return b.date - a.date;
     })
@@ -58,7 +59,10 @@ function listEvents(request, response) {
  */
 function newEvent(request, response){
 
-  var contextData = {allowedDateInfo: allowedDateInfo};
+  var contextData = {
+    'title': 'Who Brings What | New',
+    allowedDateInfo: allowedDateInfo
+  };
   response.render('create-event', contextData);
 
 }
@@ -132,15 +136,6 @@ function saveEvent(req, res){
     }
   };
 
-
-
-
-
-
-
-
-
-
 function eventDetail (req, res) {
 
   events.getById(parseInt(req.params.id)).success(function(ev) {
@@ -148,7 +143,7 @@ function eventDetail (req, res) {
         res.status(404).send('404 Error: No such event');
       }
       else {
-        res.render('event-detail', {event: ev});
+        res.render('event-detail', {'title': ev.title, event: ev});
       }
     }).error(function(err) {
       console.log(err);
