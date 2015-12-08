@@ -21,7 +21,7 @@ block mainContent
     form#email(action="#{'/events/' + event.id + '/rsvp'}", method='POST', placeholder='Enter your email here!')
       label(for='email') RSVP to this event:
       input(type='email', name='email')
-      input(type='submit', value='Submit')
+      input(type='submit', class='btn btn-default' value='Submit')
     form#thingstobring(action="#{'/events/' + event.id + '/addThingToBring'}", method="POST", placeholder='ex: the booze')
       label(for='item') Potluck Items:
       input(type='item', name='item')
