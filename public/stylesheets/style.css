@@ -62,7 +62,27 @@ outline: none;
 
 .event {
   list-style-type: none;
-  margin-bottom: 10px;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.event h4 {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.event-info {
+  width: 80%;
+  float: left;
+}
+
+.event-attending{
+  width: 20%;
+  float: left;
+  text-align: center;
+  color: white;
+  background: rgb(175, 175, 175);
+  padding: 10px; 
 }
 
 nav {

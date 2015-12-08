@@ -1,13 +1,16 @@
 ul(class="eventlist")
   for event in events
     li(class="event" id="event-#{event.id}")
-      strong #{event.title}
-      |  on 
-      span
-        time(datetime="#{event.date}") #{moment(event.date).format("dddd, MMMM Do YYYY, h:mm a")}
-      .attending 
-        | #{event.attending.length} attending so far. 
-        a(class="event-link" href="/events/#{event.id}") Click here for more details
+      div(class="event-info")
+        h4
+          strong #{event.title}
+        em
+          time(datetime="#{event.date}") #{moment(event.date).format("dddd, MMMM D, YYYY @ h:mm a")}
+        div
+          a(class="event-link" href="/events/#{event.id}") Click here for more details
+      div(class="event-attending")
+        span #{event.attending.length} attending
+      br(clear="both")
 
 // Load the Content Experiment JavaScript API client for the experiment
 script(src='//www.google-analytics.com/cx/api.js?experiment=zACIABVzR2itZEHP5hO0fQ')
