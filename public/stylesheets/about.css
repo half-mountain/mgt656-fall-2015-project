@@ -1,8 +1,7 @@
-.person
-    float: left
-    
-.name
-    font-weight: bold
+.top-offset h2
     text-align: center
+    
+.names ul li
+    float: left
     
     
