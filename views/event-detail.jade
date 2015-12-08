@@ -11,7 +11,7 @@ block mainContent
       div #{event.attending}
     #thingstobring #{event.items}
     p
-      a.donation(class='donation' href='/donation') Donate
+      a.donation(href='/donation') Donate
       |  to this event!
     div
       ul.form-errors
@@ -26,34 +26,32 @@ block mainContent
       label(for='item') Potluck Items:
       input(type='item', name='item')
       input(type='submit', value='Submit')
-
-
-// Load the Content Experiment JavaScript API client for the experiment
-script(src='//www.google-analytics.com/cx/api.js?experiment=n0nY2dweTTWqdo7oRKbYFw')
-// Load the JQuery library
-script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js')
-script.
-  // Define JavaScript for each page variation of this experiment.
-  var pageVariations = [
-  function() {
-  },  // Original: Do nothing. This will render the default HTML.
-  function() {    // Variation 1: Change "donation" to "support"
-  $( '.donation' ).text("Support");
-  }
-  ];
-  // Wait for the DOM to load, then execute the view for the chosen variation.
-  $(document).ready(function(){
-  // Ask Google Analytics which variation to show the user.
-  var chosenVariation = cxApi.chooseVariation();
-  // Execute the chosen view
-  pageVariations[chosenVariation]();
-  }
-  );
-// Recall Default Google Analytics script to push tracking data
-script.
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-70408363-1', 'auto');
-  ga('send', 'pageview');
+  // Load the Content Experiment JavaScript API client for the experiment
+  script(src='//www.google-analytics.com/cx/api.js?experiment=kThzmsmBTR-NDg0LPCORRA')
+  // Load the JQuery library
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js')
+  script.
+    // Define JavaScript for each page variation of this experiment.
+    var pageVariations = [
+    function() {
+    },  
+    function() {    
+    $( '.donation' ).text("Support");
+    }
+    ];
+    // Wait for the DOM to load, then execute the view for the chosen variation.
+    $(document).ready(function() {
+    // Ask Google Analytics which variation to show the user.
+    var chosenVariation = cxApi.chooseVariation();
+    // Execute the chosen view
+    pageVariations[chosenVariation]();
+    }
+    );
+  // Recall Default Google Analytics script to push tracking data
+  script.
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-70408363-1', 'auto');
+    ga('send', 'pageview');
