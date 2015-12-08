@@ -25,7 +25,92 @@ html
 		hr
 		br
 		
+		h2 Sprint Report 6
+		p December 7, 2015
+		h3 Burn-Up Chart
+		p
+		| The below burn-up chart can also be found at the following link: 
+		a(href= 'https://waffle.io/half-mountain/mgt656-fall-2015-project/metrics/throughput')
+		| This week, we closed many of the issues we started last week as we worked with mongoDB, Google Analytics, the remaining tests, and a new design. We are projected to finish the final report and extra design work within the next few days.
+		br
+		br
+		center
+			img(src='/images/Images for Reports/burnupSprint6.png', style='width: 600px; margin: 0 auto')
 		
+		h3 Completed Stories in Sprint 5
+		ol
+			li Database: debug and test mongodb setup
+			li Database: add sample events to the production mongodb
+			li Design: Wireframe and design for About page
+			li Design: Wireframe and design for Events listing page
+			li Design: Wireframe and design for events detail page
+			li Design: Code Create events page
+			li Design: Code landing page
+			li Design: Code Events listing page
+			li Design: Code event detail pages
+			li Design: Code About page 
+			li Design: Converted to Jade
+			li Analytics: complete and write up Experiment 1: RSVP text
+			li Analytics: complete and write up Experiment 2: donate vs support text</p>
+		ol
+	
+		h3 Accomplishments, Challenges, and Roadblocks
+		p
+			b The Sprint Process
+		p
+			em  SCRUM Ceremonies 
+		p
+			ul
+				li Sprint Planning Meeting - Mon, Nov 30 during class
+				li Daily Scrum - Every day over slack
+				li Sprint Review / Demonstration Meeting - Thurs Nov 20 @ 10am in the CEID
+				li Sprint Demonstration / Retrospection Meeting - Mon, Dec 7 during class
+			| We had our sprint planning meeting in class to determine which of the stories we could mark as completed and how to finish our remaining tasks since it was the last week. We decided we needed to prioritize completing the design work, work on the bug fixes that showed failing tests, and have Google analytics up and running as soon as possible. Many of us attended office hours because these issues were difficult to solve on our own. 
+				
+		p 
+			| Throughout the week, we continued with our daily stand-ups on Slack. Many of these conversations were troubleshooting questions in the code that required immediate attention. For instance, mocha and gulp failed to work on some member’s development environments because of the new dependencies added that slowed the development process and caused the entire team to work together to find a solution. Below is a snapshot of our conversations:
+		
+		center
+			img(src='/images/Images for Reports/slack_standup_sprint_6.png', width='400px')
+			p 
+				b  Error module
+		p
+			| The Sprint Review / Demonstration meeting was a great opportunity to get everyone up to speed on the new additions to the project (mongoDB, Jade, and Google Analytics) especially because these were all topics that we had not gone over in class previously. Because each team member was familiar with only the issue he or she was working on, this explanation meeting helped everyone understand what each other was working on, which was great for teamwork and communication. At the retrospection meeting today, we discussed how to finish the final report, giving each team member a different task, and set concrete dates to get together and work on the report’s completion. 
+
+			b Accomplishments
+		p
+			| One of our biggest accomplishments this week was coding up a new design for Who Brings What. One of the team members wireframed each page so that we could visualize both what needed to be included on each page and how the design could facilitate the best user experience. Looking back, we realized that better communication on the design could have saved us some time, but the several design iterations also helped us  understand what worked and didn’t work for our new brand. The new design incorporated elements from all of our design drafts which led to collective approval on our final look. Our conversion to Jade helped speed the process up, making the code faster to write and easier to read. Because of this, the team member assigned to these issues was able to finish coding the design overnight. 
+		
+		center
+			img(src='/images/Images for Reports/final_design_sprint_6.png', width='600px')
+			p 
+				b  Error module
+		p 
+			| Other accomplishments were successfully implementing Google Analytics and fixing bugs. While one team member took ownership of this project, proactively trying to find a solution to an application the team was unfamiliar with, other members of the team also contributed, asking TA’s relevant questions to finally have the application showing the correct data. As we took on extra features for our app, we naturally experienced new bugs. However, through Slack, we were able to discuss what the errors were quickly, and resolved all of the issues on the spot. 
+		p 
+			| These accomplishments demonstrate how over the five weeks, our team naturally became more efficient as we better understood our individual strengths and how they complemented the needs of the project. For example, one team member preferred to work on the tests, another team member enjoyed creating designs. While one team member became the “firefighter” by immediately fixing problems in the code, other team members acted as product owners, keeping everyone on track in a long-term vision. This successful cooperation demonstrated that our teamwork was an accomplishment in and of itself. 
+	
+		p
+			b Roadblocks
+		p 
+			| In this sprint, we expected to have Google Analytics up and running, but needed more time with the TAs to figure it out. We took on unexpected story points to troubleshoot Google Analytics, which had been getting zero traffic for the donation link text experiment, and very low conversions for the RSVP on the homepage experiment. To untangle this problem, our team met three times in person and daily over Slack to suggest potential causes of the bug, share knowledge gained from office hours, and test possible solutions. We found that the reason we were getting zero traffic for the donation link experiment was because our team had not yet finished setting up our MongoDB backend, and thus no events existed in our database. We also found that the reason we had such low conversions in the RSVP experiment was because when we migrated our front-end from HTML to Jade, it accidentally deleted the code where we set "class=event-link" so that the traffic could detect that class and click on the link when searching for event details.
+		p 
+			| Additionally, another challenge was getting consistent work environments running for every team member. This posed an unexpected development hurdle because mocha and gulp failed to work on some team members’ work environments, slowing down the process needed to make the tests work and see the design implementations before committing to git. We communicated largely over Slack, posting what the error messages were, and after a few days of trying different solutions, we were able to figure out the correct sequence of codes that would install the right modules. Once this was solved, we were able to complete the product backlog smoothly. 
+		
+		h3 Product Backlog (in the order they will be completed)
+		ol
+			li Design: Finish last minute styling
+			li Final Report: Answer business intelligence questions and write up final report 
+		ol
+		
+		h3 Progress Expected by Next Sprint
+		ol
+			li Design: Finish last minute styling
+			li Final Report: Answer business intelligence questions and write up final report 
+		ol
+		br
+		hr
+		br
 		h2 Sprint Report 5
 		p November 30, 2015
 		h3 Burn-Up Chart
