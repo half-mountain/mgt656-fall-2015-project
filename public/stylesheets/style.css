@@ -204,3 +204,18 @@ nav {
 footer {
   margin-bottom: 1em;
 }
+
+.name {
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.name > img {
+  padding: 1em;
+}
+
+.name > span {
+  display: block;
+}
