@@ -42,13 +42,15 @@ html
       block mainContent
         section Welcome to #{title}. #{tagline}
     block footer
-      footer © 2015 
-        a(href='/') Who Brings What
-        a(href='/about')  | About Us
-    //- script.
-    //-   $('select').each(function(){
-    //-       new Select({
-    //-           el: this,
-    //-           //- selectLikeAlignment: $(this).attr('data-select-like-alignement') || 'auto'
-    //-       });
-    //-   });
+      footer  
+        .container
+          © 2015 &nbsp;
+          a(href='/') Who Brings What
+          a(href='/about')  | About Us
+      //- script.
+      //-   $('select').each(function(){
+      //-       new Select({
+      //-           el: this,
+      //-           //- selectLikeAlignment: $(this).attr('data-select-like-alignement') || 'auto'
+      //-       });
+      //-   });

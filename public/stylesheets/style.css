@@ -196,3 +196,11 @@ nav {
 .create-event-btn {
   border-color: black;
 }
+
+#new {
+  text-decoration:underline;
+}
+
+footer {
+  margin-bottom: 1em;
+}
