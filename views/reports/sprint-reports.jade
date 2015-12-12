@@ -25,6 +25,207 @@ html
 		hr
 		br
 		
+		
+		
+		
+		h2 Final Project Report
+		p December 11, 2015
+		
+		h3 Business Intelligence
+		h4 Traffic Across Segments and Through Funnel 
+		p
+			b Segments
+		p
+			| We decided to use Google Analytics as our primary business intelligence 
+			| engine to track our website traffic across different segments. Our four 
+			| largest referrers are som.yale.edu, divinity.yale.edu, law.yale.edu, and
+			| search.yale.edu, according to the source traffic data displayed below. 
+			| School of Management visitors make up nearly 60% of of total traffic; 
+			| Divinity School visitors make up just under a quarter; Law School 
+			| visitors make up about 10%; those who searched from a Yale domain make 
+			| up about 5%. 
+		p
+			| Each of these four segments has an average session duration of less than
+			| one second. This explains our low conversion rates of those who click on
+			| the event detail links and on the donation links. All four segments are 
+			| also composed entirely of new visitors. Since returning visitors are 
+			| more likely to engage with the site, this explains our high exit rates 
+			| at the homepage and low conversion rates overall. Despite low levels 
+			| of conversion, our traffic from all four of our most popular segments 
+			| visited an average of two pages per session, which explains why our 
+			| bounce rates remain relatively low around 5%. This means that visitors 
+			| are not leaving the site after simply viewing one page.
+		center
+			img(src='#', style='width: 600px; margin: 0 auto')
+			p
+				b Traffic Across Segments: clicking on the event detail link
+		center
+			img(src='#', style='width: 600px; margin: 0 auto')
+			p
+				b Traffic Across Segments: click on the donation link
+		p
+			b Funnel
+		p
+			| Our funnel tracked users from the homepage to the event detail page to 
+			| clicking the donation link. Out of 11,000 visitors to our website 
+			| homepage, only 270 made it to the next step of the funnel by clicking 
+			| on the event detail link. Out of those 270, only 35 made it to the last 
+			| step of the funnel by clicking on the donation link. Breaking these 
+			| numbers down across our four most popular segments, we see that 2% of 
+			| SOM visitors (132 visitors out of 6,600) went from the homepage to the 
+			| event detail page, and only 3 of those clicked onto the donation link. 
+			| 1% of Divinity School visitors went from the homepage to the event 
+			| detail page, and just over 0% of Law School and search.yale.edu visitors 
+			| did so. No one from these last three segments made it all the way to 
+			| the donation link.
+		center
+			img(src='#', style='width: 600px; margin: 0 auto')
+			p
+				b Traffic Flow from Landing to Donation
+		center
+			img(src='#', style='width: 600px; margin: 0 auto')
+			p
+				b Funnel Visualization
+				
+		h4 Experiment 1: “RSVP” on the Homepage
+		p
+			| In this experiment, we wanted to test whether making the event detail 
+			| links on our homepage include the word "RSVP" would increase 
+			| click-through rate. We decided to run an A/B test using Google Analytics
+			| to determine which style of event detail link would generate the most 
+			| conversions. In this case, a conversion meant that the user clicked on 
+			| the event detail link from the homepage. The “Original” page contained 
+			| the text “Click here for more details” under each event listing. The 
+			| “Variation” page contained the text “Click here for more details and to 
+			| RSVP” under each event listing. The results of our experiment are shown 
+			| below:
+		center
+			img(src='#', style='width: 600px; margin: 0 auto')
+			p
+				b Experiment 1 Conversions
+		p
+			| Since we were tracking “click event detail link (Goal 2)” as our 
+			| conversion metric, we see that “Variation” just barely edges out 
+			| “Original” as the winner of the experiment. “Variation” had a conversion
+			| rate of 1.58%, while “Original” had a conversion rate of 1.34%. This 
+			| means that making the event detail links on our homepage include the 
+			| word "RSVP" does indeed increase click-through rate to the event detail 
+			| page. This is perhaps because users respond more strongly to calls to 
+			| action, and asking the user to click in order to RSVP sufficiently calls
+			| them into action and click the link. 
+		p
+			| Even though we had 18 days of days and over 10,000 experiment sessions, 
+			| it is jarring that less than 2% of users who visited our site clicked 
+			| the event detail link. To explain our low conversion rates for both 
+			| variations, it is helpful to compare it to our development progress and
+			| challenges in our past sprints. For approximately seven days during 
+			| this 18-day period, we were migrating our website over to mongoDB, and 
+			| thus temporarily deleted the event data we were provided in the starter 
+			| project. Once we got mongoDB up and running, we were able to add this 
+			| event data into our database. For approximately five days after that 
+			| however, we realized that our conversion rates were still low. It wasn’t
+			| until later that we realized this was because we had accidentally 
+			| deleted the “event-link” class that the traffic was being directed to 
+			| click on. This accidental deletion happened during our migration from 
+			| HTML to Jade for all of our views.
+		p
+			| From the page view metrics below, we see that just under half of our 
+			| traffic exits the site on the homepage. This means that they do not 
+			| click through from the homepage to the event detail pages. Out of the 
+			| users that stay, some may click onto other pages on our site, such as 
+			| the About page for the Event Listing page where the user can view all 
+			| the events at once. This traffic drop-off on the homepage and traffic 
+			| diversion to other pages also contributes to our low conversion rates.
+		center
+			img(src='#', style='width: 600px; margin: 0 auto')
+			p
+				b Experiment 1 Page Metrics
+			
+		h4 Experiment 2: Donation Link Text "Donate" versus "Support"
+		p
+			| We ran a second A/B test experiment to determine whether asking visitors
+			| to “Donate” or “Support” the event when they visited the event detail page
+			| would increase conversions. In particular, we tested the two variations 
+			| (labeled Event Detail Page and Variation 1 respectively on the graph below)
+			| on the event detail page located at /events/0 and measured the conversion
+			| rate as the rate at which users clicked the donation link. As shown below, 
+			| the Donate variation had a 3.98% conversion rate, much higher than the
+			| Support variation’s conversion rate of 0%. Based on this evidence, we 
+			| believe that using the text “Donate to this event” is more effective in 
+			| encouraging user donations to our sight. This is most likely because 
+			| “Donate” provides more precise language to the user. A user could 
+			| “support” an event in a variety of ways like donating, bringing food, 
+			| or sharing events on social media. “Donate” is more concrete and it 
+			| appears that users prefer the more precise term. 
+		center
+			img(src='#', style='width: 600px; margin: 0 auto')
+			p
+				b Experiment 2 Conversion Metrics
+		p
+			| However, as shown below, the Donate variation had more than double the 
+			| number of experiment sessions and pageviews as the Support variation. 
+			| This is contrary to the roughly similar pageviews that we had anticipated.
+			| The difference in experiment sessions could very well have biased the 
+			| conversion rate for this experiment. Thus, we should either rerun 
+			| or run the experiment for a longer time period to be confident in our findings.
+		center
+			img(src='#', style='width: 600px; margin: 0 auto')
+			p
+				b Experiment 2 Page Metrics
+		
+		h3 General Project Reporting
+		h4 Project Maintenance
+		p
+			| If we were to pass off our project, at the very least, we would find 
+			| someone to be the product owner. Who Brings What is still in an 
+			| incredibly beta stage without a long-term vision or immediate goals. 
+			| We have not invested any money into the project in order to have a 
+			| domain name, a higher capacity server, or a marketing strategy to 
+			| acquire users. The product owner will have to decide all of this and 
+			| act accordingly. If the product owner is not technically component or 
+			| wishes to improve the technical aspects of the app, he or she will have
+			| to hire software engineers who ideally have worked with node.js, 
+			| javascript, jade, mongoDB, and Google Analytics as these are the core 
+			| components of our app. While our app seems to work fine under traffic, 
+			| this may change if traffic increases and/or many events are inputted at 
+			| once, causing unexpected bugs that will need to be fixed. Additionally, 
+			| it will be helpful to perform different tests on Google Analytics and 
+			| receive feedback from users to implement data-driven changes. 
+		h4 New Features
+		p
+			| We added four new features to our project: a potluck adding function, 
+			| mongoDB, Google Analytics, and Jade. The potluck adding function 
+			| allows event creators to add items to bring when creating an event 
+			| and also allows users to add items to bring when RSVP-ing to an event. 
+			| It required additional coding that a few team members took on. We 
+			| installed mongoDB to better store our data once users began inputting 
+			| in their event information. We decided to go with mongoDB because a 
+			| developer on our team had worked with it before. We embedded Google 
+			| Analytics into our web pages and performed experiments for business 
+			| intelligence. This was so we could easily compile data to see trends. 
+			| We coded in Jade, a simplified version of HTML/CSS, in order to work 
+			| more efficiently. The learning curve was initially tricky for some
+			| members, but had a bigger payoff.
+		h4 Other
+		p
+			| We found it important to rebrand from the generic Eventbrite clone to 
+			| Who Brings What early on in the project. Somewhat akin to how creating 
+			| specific personas helps with making concrete UX decisions, the rebranding
+			| move helped us to feel like we had a more focused direction when thinking
+			| about the approach we would take to both visual/UX and system design.
+		p
+			| The idea of Who Brings What was to solve the problem of assigning people
+			| different tasks or items to prepare for an event. We thought that popular,
+			| existing apps did not make this easy and wanted to create an app that we,
+			| ourselves, would find useful and be a simple fix to an ongoing problem.
+			| We designed our site to reflect both the simplicity and the light-hearted
+			| fun of creating events. 
+		br
+		hr
+		br
+		
+		
+		
 		h2 Sprint Report 6
 		p December 7, 2015
 		h3 Burn-Up Chart
