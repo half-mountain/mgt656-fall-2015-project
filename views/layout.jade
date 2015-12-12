@@ -38,7 +38,7 @@ html
             li(role='presentation')
               a(href='/api') API
     block jumbotron
-    .container
+    .container.main-content
       block mainContent
         section Welcome to #{title}. #{tagline}
     block footer
@@ -47,10 +47,6 @@ html
           © 2015 &nbsp;
           a(href='/') Who Brings What
           a(href='/about')  | About Us
-      //- script.
-      //-   $('select').each(function(){
-      //-       new Select({
-      //-           el: this,
-      //-           //- selectLikeAlignment: $(this).attr('data-select-like-alignement') || 'auto'
-      //-       });
-      //-   });
+    script.
+      var height = $(window).height();
+      $('.main-content').css('min-height', height);
