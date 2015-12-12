@@ -5,8 +5,10 @@ block mainContent
     h1#title #{event.title}
     if event.image
       img#image(src='#{event.image}')
-    #date #{moment(event.date).format("dddd, MMMM Do, YYYY, h:mm a")}
-    span#location #{event.location}
+    .date
+      span#date #{moment(event.date).format("dddd, MMMM Do, YYYY, h:mm a")}
+    .location
+      span#location #{event.location}
     ul#attendees
       div #{event.attending}
     #thingstobring #{event.items}

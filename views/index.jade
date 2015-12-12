@@ -4,7 +4,7 @@ block extraHead
   link(rel="stylesheet", href="/stylesheets/index-override.css")
 
 block jumbotron
-  .jumbotron.lazyload("data-bg"="/images/cole-picnic-crop.jpg")
+  .jumbotron
     .container
       h1.jumbo-text I thought you were bringing the tequila.
       h2.jumbo-text.pad-after
@@ -19,7 +19,7 @@ block mainContent
   .skinny-container
     .row
       h2 Ever had this happen? 
-      img.lazyload#imessage(data-src='/images/imessage.png', src='/images/imessage.png', width='300px')
+      img#imessage(data-src='/images/imessage.png', src='/images/imessage.png', width='300px')
       .wbw-description(style='white-space:pre;')
         | Keep those angry emojis in check with Who Brings What. 
         br

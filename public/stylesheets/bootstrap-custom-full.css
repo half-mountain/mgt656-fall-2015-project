@@ -4345,6 +4345,8 @@ a.list-group-item.active > .badge,
   padding: 30px;
   /*margin-bottom: 30px;*/
   font-size: 21px;
+  background-image: url('/images/cole-picnic-crop.jpg');
+
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
@@ -4360,6 +4362,7 @@ a.list-group-item.active > .badge,
 }
 .container .jumbotron {
   border-radius: 6px;
+
 }
 .jumbotron .container {
   margin-top: 30px;

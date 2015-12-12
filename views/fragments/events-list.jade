@@ -3,8 +3,7 @@ ul(class="eventlist")
     li(class="event" id="event-#{event.id}")
       div(class="event-info")
         h4
-          a(href="/events/#{event.id}")
-            strong #{event.title}
+          strong #{event.title}
         em
           time(datetime="#{event.date}") #{moment(event.date).format("dddd, MMMM D, YYYY @ h:mm a")}
         div
