@@ -53,10 +53,10 @@ outline: none;
 }
 
 .skinny-container {
-  min-height: 900px;
+  /*min-height: 900px;*/
   max-width: 600px;
   margin: 0 auto;
-  padding: 1.5em;
+  padding: 1.5em 2em;
   background-color: white;
   text-align: center;
 }
@@ -79,7 +79,7 @@ outline: none;
 }
 
 .event-info {
-  width: 80%;
+  width: 75%;
   float: left;
 }
 
@@ -175,8 +175,16 @@ nav {
   display:none;
 }
 
-#create-event input[name="items"] {
+input[name="item"] {
   /*min-height: 150px;*/
+  text-align: center;
+  font-style: italic;
+}
+
+input[name="email"] {
+  text-align: center;
+  font-style: italic;
+
 }
 
 #create-event input[type="submit"] {
@@ -184,6 +192,7 @@ nav {
   background-color: none !important;
 
 }
+
 
 .giant {
   font-size: 250%;
@@ -232,11 +241,13 @@ nav {
   max-width: 100%;
 }
 
-.event-detail-page {
-  text-align: left;
+.event-detail-page, .create-event-page, .events-page {
+  text-align: center;
+  margin: 2em auto;
 }
 
-.form-errors {
+
+.special-form-errors {
   list-style-type: none;
   text-align: center;
   background-color: black;
@@ -250,8 +261,7 @@ footer {
 
 .btn-universal {
   border: none;
-  background-color: none;
-
+  background-color: white;
 }
 
 .btn-universal:hover {
@@ -260,16 +270,47 @@ footer {
 }
 
 ul#attendees {
-  width: 250px;
+  width: 50%;
   padding: 0;
   list-style-type: none;
 }
 
 ul#thingstobring {
-  width: 250px;
+  width: 50%;
   padding: 0;
+  list-style-type: none;
 }
 
 button#submit {
   background-color: white;
+}
+
+.image-thumbnail {
+  height: 100px;
+  width: 22%;
+  overflow: hidden;
+}
+.image-thumbnail > img {
+  height: 100%;
+  text-align: center;
+}
+
+
+.event-link {
+  font-weight: 600;
+}
+
+.links {
+  text-align: right;
+}
+
+.delete-event a {
+  color: gray;
+}
+
+button {
+  background-color: white;
+  padding: 0 0 0 1em;
+  margin: 0;
+  border: none;
 }

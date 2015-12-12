@@ -184,6 +184,9 @@ function addThingToBring (req, res) {
     if (ev === null) {
       res.status(404).send('404 Error: No such event');
     }
+    if (ev.items === undefined) {
+      ev.items = [];
+    }
     ev.items.push(req.body.item);
     events.collection.findAndModify(
       {"_id": ev._id}, // query

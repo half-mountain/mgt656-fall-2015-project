@@ -3,11 +3,17 @@ extends layout
 
 
 block mainContent
-  .skinny-container
-    h1 Who's (Been) Having Fun?
+  .skinny-container.events-page
+    h1 
+      em Who's (Been) Having Fun?
+    h3 All Events
     div
       include fragments/events-list
     a(href='/events/new') 
       btn.btn-universal.btn
         | Create a new event
         i.fa.fa-long-arrow-right(style="margin-left: 5px")
+
+  script.
+    $('body').css('background-image', 'url(https://picjumbo.imgix.net/IMG_9975.jpg?q=40&w=1650&sharp=30)');
+    $('body').css('background-size', 'cover');

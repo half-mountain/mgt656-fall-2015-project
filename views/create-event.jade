@@ -1,8 +1,7 @@
 extend layout
 
 block mainContent
-  .skinny-container
-    .top-offset
+  .skinny-container.create-event-page
       if errors
         div(class="form-errors panel panel-danger")
           .panel-heading
@@ -12,7 +11,8 @@ block mainContent
               li #{error}
     
       .giant
-        h1 Let's get this party started...
+        h1 
+          em Let's get this party started...
       
       form#create-event(method='POST')
         h3 Create your ah-shmazing event
@@ -59,7 +59,13 @@ block mainContent
           label(for='items') Things To Bring:
           each val in ["booze", "silverware", "pumpkin pie", "popcorn", "playlist"]
             input(type='text', name='items', onfocus="this.placeholder = ''", class='form-control', placeholder='Remember the #{val}!')
+        .clearfix
         button.pull-right(id='submit', class='btn btn-universal')
           | Create Event
           i.fa.fa-long-arrow-right(style="margin-left: 5px")
+        .clearfix
         script(src="/javascripts/createevent.js")
+
+        script.
+          $('body').css('background-image', 'url(https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?crop=entropy&dpr=2&fit=crop&fm=jpg&h=700&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450)');
+          $('body').css('background-size', 'cover');

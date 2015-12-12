@@ -1,17 +1,27 @@
 ul(class="eventlist")
   for event in events
     li(class="event" id="event-#{event.id}")
-      div(class="event-info")
+      .image-thumbnail.pull-left
+        img(src='#{event.image}')
+      div(class="event-info pull-right")
         h4
           strong #{event.title}
         em
           time(datetime="#{event.date}") #{moment(event.date).format("dddd, MMMM D, YYYY @ h:mm a")}
-        div
+        .clearfix
+        .pull-left
+          span #{event.attending.length} attending
+          br
+        .clearfix
+        .links.pull-right
           a(class="event-link" href="/events/#{event.id}") Click here for more details
-          form(action="/events/#{event.id}/removeEvent" method="POST") 
-            input(type='submit', class='btn' value='Delete')
-      div(class="event-attending")
-        span #{event.attending.length} attending
+          br 
+          form.delete-event(action="/events/#{event.id}/removeEvent" method="POST") 
+            button 
+              em 
+                a Delete Event
+          
+      //- div(class="event-attending")
       br(clear="both")
 
 // Load the Content Experiment JavaScript API client for the experiment
