@@ -43,7 +43,6 @@ block mainContent
           em
             | Nothing yet! Add some things to bring! 
             br
-            br
         br
         form#thingstobring(action="#{'/events/' + event.id + '/addThingToBring'}", method="POST", placeholder='ex: the booze')
           input(type='item', name='item', placeholder="Add to the potluck")
