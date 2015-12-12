@@ -8,6 +8,8 @@ ul(class="eventlist")
           time(datetime="#{event.date}") #{moment(event.date).format("dddd, MMMM D, YYYY @ h:mm a")}
         div
           a(class="event-link" href="/events/#{event.id}") Click here for more details
+          form(action="/events/#{event.id}/removeEvent" method="POST") 
+            input(type='submit', class='btn' value='Delete')
       div(class="event-attending")
         span #{event.attending.length} attending
       br(clear="both")

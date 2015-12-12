@@ -242,7 +242,7 @@ describe('The event detail pages',function(){
 
   it('should allow Yale users to RSVP', function(done){
     var browser = new Browser();
-    var email = RandExp(/[a-z]/)+'@YAle.edu';
+    var email = RandExp(/[a-z]/)+'@yale.edu';
 
     browser.visit(SITE + '/events/0', function(){
       assert.ok(browser.html().indexOf(email) === -1, 'Email ' + email + ' found before filling form at /events/0.');

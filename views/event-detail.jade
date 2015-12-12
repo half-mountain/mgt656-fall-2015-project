@@ -1,29 +1,51 @@
 extend layout
 
 block mainContent
-  .skinny-container
-    h1#title #{event.title}
+  .skinny-container.event-detail-page
+    h1#title 
+      center  #{event.title}
     if event.image
-      img#image(src='#{event.image}')
-    .date
-      span#date #{moment(event.date).format("dddd, MMMM Do, YYYY, h:mm a")}
+      center
+        img#image(src='#{event.image}')
+    br
+    br
     .location
+      strong Where: 
       span#location #{event.location}
-    ul#attendees
-      div #{event.attending}
-    #thingstobring #{event.items}
-    p
-      a.donation(href='/donation') Donate
-      |  to this event!
+    .date
+      strong When: 
+      span#date #{moment(event.date).format("dddd, MMMM Do, YYYY, h:mm a")}
+    ul#attendees.pull-left
+      strong RSVP'd: 
+      if event.attending.length > 0
+        for attendee in event.attending 
+          li #{attendee}
+      else
+        em
+          | No one yet! 
+    ul#thingstobring.pull-right
+      strong Things To Bring: 
+      if event.items && event.items.length > 0 
+        for item in event.items
+          li #{item}
+      else
+        br
+        em
+          | Nothing yet! Add some things to bring! 
+    .clearfix
+    div
+      center
+        a(href='/donation') 
+          span.donation Donate to
+          |  this event!
     div
       ul.form-errors
         if errors
           for error in errors
             li #{error}
     form#email(action="#{'/events/' + event.id + '/rsvp'}", method='POST', placeholder='Enter your email here!')
-      label(for='email') RSVP to this event:
-      input(type='email', name='email')
-      input(type='submit', class='btn btn-default' value='Submit')
+      input.form-control(type='email', name='email', placeholder='RSVP to this event')
+      input.form-control(type='submit', class='btn btn-default' value='Submit')
     form#thingstobring(action="#{'/events/' + event.id + '/addThingToBring'}", method="POST", placeholder='ex: the booze')
       label(for='item') Potluck Items:
       input(type='item', name='item')
@@ -57,3 +79,6 @@ block mainContent
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     ga('create', 'UA-70408363-1', 'auto');
     ga('send', 'pageview');
+  
+  script.
+    $('body').css('background-image', 'url(#{event.image})');

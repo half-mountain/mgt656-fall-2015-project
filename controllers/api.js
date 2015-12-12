@@ -16,28 +16,32 @@ function viewApi(request, response) {
 function listEventsJSON(request, response) {
   var search = request.query.search;
   var output = {events: []};
-  var allEvents = events.all;
 
-  if (search) {
-    for (var i = 0; i < allEvents.length; i++) {
-      var curEvent = allEvents[i];
-      if(curEvent.title.indexOf(search) !== -1) {
-        output.events.push(curEvent);
-      }
-      else {
-        for (var j = 0; j < curEvent.attending.length; j++) {
-          if(curEvent.attending[j].indexOf(search) !== -1) {
-            output.events.push(curEvent);
+  events.getAll().success(function (allEvents) {
+    if (search) {
+      for (var i = 0; i < allEvents.length; i++) {
+        var curEvent = allEvents[i];
+        if(curEvent.title.indexOf(search) !== -1) {
+          output.events.push(curEvent);
+        }
+        else {
+          for (var j = 0; j < curEvent.attending.length; j++) {
+            if(curEvent.attending[j].indexOf(search) !== -1) {
+              output.events.push(curEvent);
+            }
           }
         }
       }
     }
-  }
-  else {
-    output.events = allEvents;
-  }
+    else {
+      output.events = allEvents;
+    }
 
-  response.json(output);
+    response.json(output);
+
+  }).error(function (err) {
+    throw err;
+  });
 }
 
 /**

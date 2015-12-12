@@ -8,18 +8,21 @@ var router = express.Router();
 /**
  * Controller that renders our index (home) page.
  */
+
+
 function index (request, response) {
-  var currentTime = new Date();
-  var contextData = {
-    'title': 'Who Brings What',
-    'tagline': 'Check out our upcoming events!',
-    'events': events.all.sort(function(a, b) {
-        return b.date - a.date;
-      }).filter(function(x) {
-        return x.date > currentTime;
-      })
-  };
-  response.render('index', contextData);
+
+  events.getUpcomingEvents().success(function (eventList) {
+    var contextData = {
+      'title': 'Half Mountain',
+      'tagline': 'Check out our upcoming events!',
+      'events': eventList
+    }
+    response.render('index', contextData);
+
+  }).error(function (err) {
+      throw err;
+  });
 }
 
 module.exports = {

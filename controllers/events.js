@@ -5,7 +5,24 @@ var events = require('../models/events');
 var validator = require('validator');
 var lodash = require('lodash');
 var express = require('express');
+var mongo = require('mongodb');
+var monk = require('monk');
+// var mongoUri = process.env.MONGOLAB_URI;
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if (process.env.NODE_ENV === 'development') {
+  var db = monk("mongodb://localhost:27017/halfmountain")
+}
+if (process.env.NODE_ENV === 'production') {
+  var db = monk(process.env.MONGOLAB_URI);
+}
+
+if (process.env.NODE_ENV === 'testing') {
+  var db = monk("mongodb://localhost:27017/halfmountain");
+}
+
+var collection = db.get('eventlist');
 
 // Date data that would be useful to you
 // completing the project These data are not
@@ -43,14 +60,18 @@ var allowedDateInfo = {
 
 
 function listEvents(request, response) {
-  var allEvents = events.all;
-  var contextData = {
-    'title': 'Who Brings What | Events',
-    'events': events.all.sort(function(a, b) {
-      return b.date - a.date;
-    })
-  };
-  response.render('event', contextData);
+
+  events.getAll().success(function (eventList) {
+    var contextData = {
+      'title': 'Who Brings What | Events',
+      'events': eventList
+    };
+    response.render('event', contextData);
+
+  }).error(function (err) {
+    throw err;
+  });
+
 }
 
 
@@ -84,56 +105,60 @@ function saveEvent(req, res){
 
     var thingsToBring = [];
     thingsToBring.push(req.body.items);
+    events.getMaxId(function (maxId) {
+      var newEvent = {
+        id: maxId + 1,
+        title: req.body.title,
+        location: req.body.location,
+        image: req.body.image,
+        date: new Date(req.body.year, req.body.month, req.body.day, req.body.hour, req.body.minute),
+        attending: [],
+        items: thingsToBring
+      };
 
-    var newEvent = {
-      id: events.getMaxId() + 1,
-      title: req.body.title,
-      location: req.body.location,
-      image: req.body.image,
-      date: new Date(req.body.year, req.body.month, req.body.day, req.body.hour, req.body.minute),
-      attending: [],
-      items: thingsToBring
-    };
+      var contextData = {errors: [], allowedDateInfo: allowedDateInfo};
 
-    var contextData = {errors: [], allowedDateInfo: allowedDateInfo};
+        if (validator.isLength(req.body.title, 5, 50) === false) {
+          contextData.errors.push('Your title should be between 5 and 100 letters.');
+        }
 
-      if (validator.isLength(req.body.title, 5, 50) === false) {
-        contextData.errors.push('Your title should be between 5 and 100 letters.');
+        if (validator.isLength(req.body.location, 5, 50) === false) {
+          contextData.errors.push('Your location should be less than 50 characters.');
+        }
+
+        isRangedInt(req.body.year, "year", allowedDateInfo.years[0], allowedDateInfo.years[allowedDateInfo.years.length-1], contextData.errors);
+        isRangedInt(req.body.day, "day", allowedDateInfo.days[0], allowedDateInfo.days[allowedDateInfo.days.length-1], contextData.errors);
+        isRangedInt(req.body.hour, "hour", allowedDateInfo.hours[0], allowedDateInfo.hours[allowedDateInfo.hours.length-1], contextData.errors);
+        isRangedInt(req.body.minute, "minute", allowedDateInfo.minutes[0], allowedDateInfo.minutes[allowedDateInfo.minutes.length-1], contextData.errors);
+        isRangedInt(req.body.month, "month", 0, 11, contextData.errors);
+
+        if (!validator.isURL(req.body.image, {require_protocol: true})) {
+          contextData.errors.push('Please provide an online image url (http://...)')
+        }
+
+        if (req.body.image.match(/\.(gif|png)$/i) === null ){
+          contextData.errors.push('Your image should be a png or gif');
+        }
+
+      if (contextData.errors.length === 0) {
+        events.collection.insert( newEvent , function (err, doc) {
+            if (err) {
+                // If it failed, return error
+                res.status(404).send("There was a problem adding the information to the database.");
+            }
+            else {
+                // And forward to success page
+                // events.all.push(newEvent);
+                res.redirect('/events/' + newEvent.id);
+            }
+        });
+      } else {
+        res.render('create-event', contextData);
       }
+    }, function (error){
+      throw error;
+    });
 
-      if (validator.isLength(req.body.location, 5, 50) === false) {
-        contextData.errors.push('Your location should be less than 50 characters.');
-      }
-
-      isRangedInt(req.body.year, "year", allowedDateInfo.years[0], allowedDateInfo.years[allowedDateInfo.years.length-1], contextData.errors);
-      isRangedInt(req.body.day, "day", allowedDateInfo.days[0], allowedDateInfo.days[allowedDateInfo.days.length-1], contextData.errors);
-      isRangedInt(req.body.hour, "hour", allowedDateInfo.hours[0], allowedDateInfo.hours[allowedDateInfo.hours.length-1], contextData.errors);
-      isRangedInt(req.body.minute, "minute", allowedDateInfo.minutes[0], allowedDateInfo.minutes[allowedDateInfo.minutes.length-1], contextData.errors);
-      isRangedInt(req.body.month, "month", 0, 11, contextData.errors);
-
-      if (!validator.isURL(req.body.image, {require_protocol: true})) {
-        contextData.errors.push('Please provide an online image url (http://...)')
-      }
-
-      if (req.body.image.match(/\.(gif|png)$/i) === null ){
-        contextData.errors.push('Your image should be a png or gif');
-      }
-
-    if (contextData.errors.length === 0) {
-      events.collection.insert( newEvent , function (err, doc) {
-          if (err) {
-              // If it failed, return error
-              res.status(404).send("There was a problem adding the information to the database.");
-          }
-          else {
-              // And forward to success page
-              events.all.push(newEvent);
-              res.redirect('/events/' + newEvent.id);
-          }
-      });
-    } else {
-      res.render('create-event', contextData);
-    }
   };
 
 function eventDetail (req, res) {
@@ -149,6 +174,8 @@ function eventDetail (req, res) {
       console.log(err);
     });
 }
+
+
 
 
 function addThingToBring (req, res) {
@@ -182,7 +209,8 @@ function rsvp (request, response){
       response.status(404).send('404 Error: No such event');
     }
     if (validator.isEmail(request.body.email) && request.body.email.toLowerCase().indexOf('@yale.edu') !== -1){
-      ev.attending.push(request.body.email);
+      var email = request.body.email;
+      ev.attending.push(email);
       // JW: Is this anyway you can modify an object instead of querying for it again?
       events.collection.findAndModify(
         {"_id": ev._id}, // query
@@ -207,6 +235,18 @@ function rsvp (request, response){
   });
 }
 
+
+function removeEvent (req, res) {
+    events.collection.remove({"id": parseInt(req.params.id)}, function(err) {
+      if (err) {
+        throw err;
+      }else{
+        res.redirect('/events');
+      }
+    });
+}
+
+
 /**
  * Export all our functions (controllers in this case, because they
  * handles requests and render responses).
@@ -214,6 +254,7 @@ function rsvp (request, response){
 module.exports = {
   'listEvents': listEvents,
   'eventDetail': eventDetail,
+  'removeEvent': removeEvent,
   'newEvent': newEvent,
   'saveEvent': saveEvent,
   'rsvp': rsvp,

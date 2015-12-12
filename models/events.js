@@ -18,42 +18,49 @@ if (process.env.NODE_ENV === 'testing') {
 }
 
 var collection = db.get('eventlist');
-var events = collection.find();
-var allEvents = [];
 
-// this isn't updating? asynchronous problem?
-events.each(function(x){allEvents.push(x)});
 
 /**
  * Returns the first event that has a particular id.
  */
 function getById (id) {
    return collection.findOne({id: id});
-  //  console.log('hello');
-   //
-  //  collection.findOne({id:id}).on('success', function(doc) {
-  //    console.log('yo');
-  //    return doc;
-   //
-  //  })
-
 }
 
+function getAll () {
+  return collection.find({}, {sort : { "date" : 1, "title": 1 } });
+}
 
-function getMaxId () {
-  var maxId = null;
-  for (var i = allEvents.length - 1; i >= 0; i--) {
-    if (maxId === null || maxId < allEvents[i].id){
-      maxId = allEvents[i].id;
+function getUpcomingEvents () {
+  return collection.find({"date": { $gt: new Date() } }, {sort : { "date" : 1, "title": 1 } });
+}
+
+function getMaxId (callback, errorCallBack) {
+
+  collection.findOne({}, {sort: {id: -1}}, function(err, object) {
+    if (err) {
+      errorCallBack(err);
+    } else if (object === null){
+      callback(0);
+    } else {
+      callback(object.id);
     }
-  }
-  return maxId;
+  });
+
+  // var maxId = null;
+  // for (var i = allEvents.length - 1; i >= 0; i--) {
+  //   if (maxId === null || maxId < allEvents[i].id){
+  //     maxId = allEvents[i].id;
+  //   }
+  // }
+  // return maxId;
 }
 
 
 module.exports = exports = {
-  all: allEvents,
+  getAll: getAll,
   getById: getById,
   getMaxId: getMaxId,
-  collection: collection
+  collection: collection,
+  getUpcomingEvents: getUpcomingEvents
 };
