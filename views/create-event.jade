@@ -3,12 +3,13 @@ extend layout
 block mainContent
   .skinny-container.create-event-page
       if errors
-        div(class="form-errors panel panel-danger")
+        div("panel panel-danger")
           .panel-heading
             h3(class="panel-title") Please correct the following errors:
           .panel-body
-            for error in errors
-              li #{error}
+            ul(class="form-errors")
+              for error in errors
+                li #{error}
     
       .giant
         h1 
